@@ -29,7 +29,7 @@ fastqc for quality control
 
 # run trim galore
 
-adapter trimming tool for illumina adapter removal
+adapter trimming tool for illumina adapter removal.
 
 ```
  (for i in $(cat 161208_NB501043_0090_AH55LGBGX2.source.table.sh);do echo $i ; . <(echo $i);sbatch s01_fqtrim_trimgalore.sh $read1fqgz $Sample $lane; done)
