@@ -52,12 +52,12 @@ mkdir -p $outDir;
 mkdir -p $outDir/nf
 cd $outDir/nf
 perl -wne 'my $header = $_; defined(my $seq = <>) or die "Input error incomplete fasta"; chomp $seq;print $header.$seq."\n" if(length($seq) >= 17);' ${mainDir}/nf.sample.all.reads.fa > $(pwd)/nf.sample.all.reads.fa
-quantifier.pl  -c ${mainDir}/nf.sample.config -p ${mainDir}/custom.fa -m ${mainDir}/custom.fa -r $(pwd)/nf.sample.all.reads.fa -P -W -y nf_custom -W -e 300 -f 300
+quantifier.pl -g 0 -c ${mainDir}/nf.sample.config -p ${mainDir}/custom.fa -m ${mainDir}/custom.fa -r $(pwd)/nf.sample.all.reads.fa -P -W -y nf_custom -W -e 300 -f 300
 
 mkdir -p $outDir/default
 cd $outDir/default
 perl -wne 'my $header = $_; defined(my $seq = <>) or die "Input error incomplete fasta"; chomp $seq;print $header.$seq."\n" if(length($seq) >= 17);' ${mainDir}/default.sample.all.reads.fa > $(pwd)/default.sample.all.reads.fa
-quantifier.pl  -c ${mainDir}/default.sample.config -p ${mainDir}/custom.fa -m ${mainDir}/custom.fa -r $(pwd)/default.sample.all.reads.fa -P -W -y default_custom
+quantifier.pl -g 0 -c ${mainDir}/default.sample.config -p ${mainDir}/custom.fa -m ${mainDir}/custom.fa -r $(pwd)/default.sample.all.reads.fa -P -W -y default_custom
 
 #ml DigitalBarcodeReadgroups/0.1.6-foss-2015b-Perl-5.20.2-bare mirdeep2/0.0.8-foss-2015b-Perl-5.20.2
 
