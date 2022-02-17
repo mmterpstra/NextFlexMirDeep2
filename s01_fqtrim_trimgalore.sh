@@ -47,7 +47,7 @@ fi
 mkdir -p $outDir;
 
 
-ml FastQC/0.11.5-Java-1.7.0_80 TrimGalore/0.3.7-foss-2015b
+ml FastQC/0.11.9-Java-11 Trim_Galore/0.6.6-GCCcore-9.3.0-Python-3.8.2
 trim_galore --adapter TGGAATTCTCGGGTGCCAAGG --length 15 --output_dir  ${outDir}/ --fastqc_args "--noextract"  ${fqFile}
 
 touch $doneFile

@@ -44,7 +44,7 @@ fi
 
 echo "## "$(date)" ##  $0 Started "
 
-ml DigitalBarcodeReadgroups/0.1.6-foss-2015b-Perl-5.20.2-bare mirdeep2/0.0.8-foss-2015b-Perl-5.20.2
+ml DigitalBarcodeReadgroups/0.1.10-GCC-10.2.0-Perl-5.32.0 mirdeep2/0.1.3-GCC-10.2.0-Perl-5.32.0  
 #pseudo: quantifier.pl -P -p hsa_viral_novel_hairpin.fa -c mirdeep.config -m hsa_viral_novel_mature.fa -r processed.all.collapse_md.fa -y quantifier_run_00 -W >quantifier.out 2> quantifier.err
 
 mkdir -p $outDir;

@@ -37,7 +37,7 @@ fi
 
 mkdir -p $outDir;
 
-ml FastQC/0.11.5-Java-1.7.0_80
+ml FastQC/0.11.9-Java-11
 fastqc --noextract ${fqFile} --outdir ${outDir}/
 
 touch ${outDir}/$(basename ${fqFile}).$SLURM_JOB_ID.done

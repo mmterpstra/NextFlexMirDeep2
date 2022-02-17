@@ -46,8 +46,8 @@ echo "## "$(date)" ##  $0 Started "
 
 mkdir -p $outDir;
 
+ml DigitalBarcodeReadgroups/0.1.10-GCC-10.2.0-Perl-5.32.0 mirdeep2/0.1.3-GCC-10.2.0-Perl-5.32.0
 
-ml DigitalBarcodeReadgroups/0.1.6-foss-2015b-Perl-5.20.2-bare mirdeep2/0.0.8-foss-2015b-Perl-5.20.2
 zcat ${inDir}/${sampleName}.fq.gz |fastq2fasta.pl - | collapse_reads_md.pl - ${sampleShortName} > ${outDir}/${sampleShortName}.collapseMd.fa
 #the PCR duplicate problem more pcr dups = more sampleing dispersion vs saturation of a loci. This can be approched greedely by allowing more than 1 read for each barcode to pass, creating more observations and extending the ranges of observed barcodes. beermat (or beer coaster) math says possibleadapters/amountofreadobservations=4^[6-8]/10000 =~ 0.4-6,5 and because the pcr cycles are not taken into account this will likely be higher and more spread for each barcode, but with less saturation. So likely the count of max 2 should be safe. 
 zcat ${inDir}/${sampleName}.fq.gz | \
