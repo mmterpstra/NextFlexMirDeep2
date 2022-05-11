@@ -2,10 +2,10 @@
 #SBATCH --job-name=Quantifier
 #SBATCH --output=logs/Quantifier_%j.out
 #SBATCH --error=logs/Quantifier_%j.err
-#SBATCH --partition=duo-pro
+
 #SBATCH --time=4-23:00:00
 #SBATCH --cpus-per-task 1
-#SBATCH --mem 7gb
+#SBATCH --mem 80gb
 #SBATCH --nodes 1
 #SBATCH --open-mode=append
 #SBATCH --export=NONE
@@ -44,25 +44,26 @@ fi
 
 echo "## "$(date)" ##  $0 Started "
 
-ml DigitalBarcodeReadgroups/0.1.6-foss-2015b-Perl-5.20.2-bare mirdeep2/0.0.8-foss-2015b-Perl-5.20.2
+ml DigitalBarcodeReadgroups/0.1.10-GCC-10.2.0-Perl-5.32.0 mirdeep2/0.1.3-GCC-10.2.0-Perl-5.32.0
+
 #pseudo: quantifier.pl -P -p hsa_viral_novel_hairpin.fa -c mirdeep.config -m hsa_viral_novel_mature.fa -r processed.all.collapse_md.fa -y quantifier_run_00 -W >quantifier.out 2> quantifier.err
 
 mkdir -p $outDir;
 
-mkdir -p $outDir/high_conf_nf
-cd $outDir/high_conf_nf
-perl -wne 'my $header = $_; defined(my $seq = <>) or die "Input error incomplete fasta"; chomp $seq;print $header.$seq."\n" if(length($seq) >= 17);' ${mainDir}/nf.sample.all.reads.fa > $(pwd)/high_conf_nf.sample.all.reads.fa 
-quantifier.pl  -c ${mainDir}/nf.sample.config -p ${mainDir}/mirbase21/high_conf_hairpin.fa -m ${mainDir}/mirbase21/high_conf_mature.fa -r $(pwd)/high_conf_nf.sample.all.reads.fa -y nf.highconf -P -t hsa -W
+#mkdir -p $outDir/high_conf_nf
+#cd $outDir/high_conf_nf
+#perl -wne 'my $header = $_; defined(my $seq = <>) or die "Input error incomplete fasta"; chomp $seq;print $header.$seq."\n" if(length($seq) >= 17);' ${mainDir}/nf.sample.all.reads.fa > $(pwd)/high_conf_nf.sample.all.reads.fa 
+#quantifier.pl  -c ${mainDir}/nf.sample.config -p ${mainDir}/mirbase21/high_conf_hairpin.fa -m ${mainDir}/mirbase21/high_conf_mature.fa -r $(pwd)/high_conf_nf.sample.all.reads.fa -y nf.highconf -P -t hsa -W
 
 mkdir -p $outDir/high_conf_default
 cd $outDir/high_conf_default
 perl -wne 'my $header = $_; defined(my $seq = <>) or die "Input error incomplete fasta"; chomp $seq;print $header.$seq."\n" if(length($seq) >= 17);' ${mainDir}/default.sample.all.reads.fa > $(pwd)/high_conf_default.sample.all.reads.fa
 quantifier.pl  -c ${mainDir}/default.sample.config -p ${mainDir}/mirbase21/high_conf_hairpin.fa -m ${mainDir}/mirbase21/high_conf_mature.fa -r $(pwd)/high_conf_default.sample.all.reads.fa -y default.highconf -P -t hsa -W
 
-mkdir -p $outDir/nf
-cd $outDir/nf
-perl -wne 'my $header = $_; defined(my $seq = <>) or die "Input error incomplete fasta"; chomp $seq;print $header.$seq."\n" if(length($seq) >= 17);' ${mainDir}/nf.sample.all.reads.fa > $(pwd)/nf.sample.all.reads.fa
-quantifier.pl  -c ${mainDir}/nf.sample.config -p ${mainDir}/mirbase21/hairpin.fa -m ${mainDir}/mirbase21/mature.fa -r $(pwd)/nf.sample.all.reads.fa -P -t hsa -W -y nf
+#mkdir -p $outDir/nf
+#cd $outDir/nf
+#perl -wne 'my $header = $_; defined(my $seq = <>) or die "Input error incomplete fasta"; chomp $seq;print $header.$seq."\n" if(length($seq) >= 17);' ${mainDir}/nf.sample.all.reads.fa > $(pwd)/nf.sample.all.reads.fa
+#quantifier.pl  -c ${mainDir}/nf.sample.config -p ${mainDir}/mirbase21/hairpin.fa -m ${mainDir}/mirbase21/mature.fa -r $(pwd)/nf.sample.all.reads.fa -P -t hsa -W -y nf
 
 mkdir -p $outDir/default
 cd $outDir/default

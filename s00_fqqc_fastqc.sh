@@ -2,7 +2,7 @@
 #SBATCH --job-name=smallRNA_Fastqc_%j
 #SBATCH --output=logs/Fastqc_%j.out
 #SBATCH --error=logs/Fastqc_%j.err
-#SBATCH --partition=duo-pro
+
 #SBATCH --time=10:00:00
 #SBATCH --cpus-per-task 1
 #SBATCH --mem 1gb

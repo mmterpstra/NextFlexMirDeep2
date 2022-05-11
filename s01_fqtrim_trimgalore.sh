@@ -2,7 +2,7 @@
 #SBATCH --job-name=smallRNA_TrimGalore_%j
 #SBATCH --output=logs/Trimgalore_%j.out
 #SBATCH --error=logs/TrimGalore_%j.err
-#SBATCH --partition=duo-pro
+
 #SBATCH --time=10:00:00
 #SBATCH --cpus-per-task 1
 #SBATCH --mem 1gb
@@ -47,7 +47,7 @@ fi
 mkdir -p $outDir;
 
 
-ml FastQC/0.11.5-Java-1.7.0_80 TrimGalore/0.3.7-foss-2015b
+ml FastQC/0.11.5-Java-1.7.0_80 Trim_Galore/0.6.6-GCCcore-9.3.0-Python-3.8.2
 trim_galore --adapter TGGAATTCTCGGGTGCCAAGG --length 15 --output_dir  ${outDir}/ --fastqc_args "--noextract"  ${fqFile}
 
 touch $doneFile

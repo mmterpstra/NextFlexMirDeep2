@@ -2,7 +2,7 @@
 #SBATCH --job-name=Quantifier
 #SBATCH --output=logs/Quantifier_%j.out
 #SBATCH --error=logs/Quantifier_%j.err
-#SBATCH --partition=duo-pro
+
 #SBATCH --time=4-23:00:00
 #SBATCH --cpus-per-task 1
 #SBATCH --mem 7gb

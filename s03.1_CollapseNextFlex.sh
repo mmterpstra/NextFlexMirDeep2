@@ -2,7 +2,7 @@
 #SBATCH --job-name=smallRNA_CollapseNextFlex
 #SBATCH --output=logs/Collapse_nextflex_%j.out
 #SBATCH --error=logs/Collapse_nextflex_%j.err
-#SBATCH --partition=duo-pro
+
 #SBATCH --time=10:00:00
 #SBATCH --cpus-per-task 1
 #SBATCH --mem 7gb

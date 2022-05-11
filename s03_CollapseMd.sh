@@ -2,10 +2,10 @@
 #SBATCH --job-name=smallRNA_Collapse
 #SBATCH --output=logs/Collapse_%j.out
 #SBATCH --error=logs/Collapse_%j.err
-#SBATCH --partition=duo-pro
+
 #SBATCH --time=10:00:00
 #SBATCH --cpus-per-task 1
-#SBATCH --mem 1gb
+#SBATCH --mem 4gb
 #SBATCH --nodes 1
 #SBATCH --open-mode=append
 #SBATCH --export=NONE
@@ -19,8 +19,11 @@ set -o pipefail;
 fqFile=$1
 sampleName=$2
 sampleShortName=$3
-inDir=$(pwd)/N4/${sampleName}_${sampleShortName}/
-inFqGz=${inDir}/${sampleName}.fq.gz
+#N4 or trimGalore
+lastDir=$4
+
+inDir=$(pwd)/${lastDir}/${sampleName}__${sampleShortName}/
+inFqGz=${inDir}/*_R1*.fastq.gz
 
 #out
 step="collapse"
@@ -47,8 +50,8 @@ echo "## "$(date)" ##  $0 Started "
 mkdir -p $outDir;
 
 
-ml DigitalBarcodeReadgroups/0.1.6-foss-2015b-Perl-5.20.2-bare mirdeep2/0.0.8-foss-2015b-Perl-5.20.2
-zcat ${inDir}/${sampleName}.fq.gz |fastq2fasta.pl - | collapse_reads_md.pl - ${sampleShortName} > ${outDir}/${sampleShortName}.collapseMd.fa
+ml DigitalBarcodeReadgroups/0.1.10-GCC-10.2.0-Perl-5.32.0 mirdeep2/0.1.3-GCC-10.2.0-Perl-5.32.0
+zcat ${inFqGz} |fastq2fasta.pl - | collapse_reads_md.pl - ${sampleShortName} > ${outDir}/${sampleShortName}.collapseMd.fa
 
 touch $doneFile
 

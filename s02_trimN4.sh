@@ -2,7 +2,7 @@
 #SBATCH --job-name=trimN4_Digitalbcrgs
 #SBATCH --output=logs/Digitalbcrgs_%j.out
 #SBATCH --error=logs/Digitalbcrgs_%j.err
-#SBATCH --partition=duo-pro
+
 #SBATCH --time=10:00:00
 #SBATCH --cpus-per-task 1
 #SBATCH --mem 1gb
