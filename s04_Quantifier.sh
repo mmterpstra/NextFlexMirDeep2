@@ -50,20 +50,20 @@ ml DigitalBarcodeReadgroups/0.1.10-GCC-10.2.0-Perl-5.32.0 mirdeep2/0.1.3-GCC-10.
 
 mkdir -p $outDir;
 
-#mkdir -p $outDir/high_conf_nf
-#cd $outDir/high_conf_nf
-#perl -wne 'my $header = $_; defined(my $seq = <>) or die "Input error incomplete fasta"; chomp $seq;print $header.$seq."\n" if(length($seq) >= 17);' ${mainDir}/nf.sample.all.reads.fa > $(pwd)/high_conf_nf.sample.all.reads.fa 
-#quantifier.pl  -c ${mainDir}/nf.sample.config -p ${mainDir}/mirbase21/high_conf_hairpin.fa -m ${mainDir}/mirbase21/high_conf_mature.fa -r $(pwd)/high_conf_nf.sample.all.reads.fa -y nf.highconf -P -t hsa -W
+mkdir -p $outDir/high_conf_nf
+cd $outDir/high_conf_nf
+perl -wne 'my $header = $_; defined(my $seq = <>) or die "Input error incomplete fasta"; chomp $seq;print $header.$seq."\n" if(length($seq) >= 17);' ${mainDir}/nf.sample.all.reads.fa > $(pwd)/high_conf_nf.sample.all.reads.fa 
+quantifier.pl  -c ${mainDir}/nf.sample.config -p ${mainDir}/mirbase21/high_conf_hairpin.fa -m ${mainDir}/mirbase21/high_conf_mature.fa -r $(pwd)/high_conf_nf.sample.all.reads.fa -y nf.highconf -P -t hsa -W
 
 mkdir -p $outDir/high_conf_default
 cd $outDir/high_conf_default
 perl -wne 'my $header = $_; defined(my $seq = <>) or die "Input error incomplete fasta"; chomp $seq;print $header.$seq."\n" if(length($seq) >= 17);' ${mainDir}/default.sample.all.reads.fa > $(pwd)/high_conf_default.sample.all.reads.fa
 quantifier.pl  -c ${mainDir}/default.sample.config -p ${mainDir}/mirbase21/high_conf_hairpin.fa -m ${mainDir}/mirbase21/high_conf_mature.fa -r $(pwd)/high_conf_default.sample.all.reads.fa -y default.highconf -P -t hsa -W
 
-#mkdir -p $outDir/nf
-#cd $outDir/nf
-#perl -wne 'my $header = $_; defined(my $seq = <>) or die "Input error incomplete fasta"; chomp $seq;print $header.$seq."\n" if(length($seq) >= 17);' ${mainDir}/nf.sample.all.reads.fa > $(pwd)/nf.sample.all.reads.fa
-#quantifier.pl  -c ${mainDir}/nf.sample.config -p ${mainDir}/mirbase21/hairpin.fa -m ${mainDir}/mirbase21/mature.fa -r $(pwd)/nf.sample.all.reads.fa -P -t hsa -W -y nf
+mkdir -p $outDir/nf
+cd $outDir/nf
+perl -wne 'my $header = $_; defined(my $seq = <>) or die "Input error incomplete fasta"; chomp $seq;print $header.$seq."\n" if(length($seq) >= 17);' ${mainDir}/nf.sample.all.reads.fa > $(pwd)/nf.sample.all.reads.fa
+quantifier.pl  -c ${mainDir}/nf.sample.config -p ${mainDir}/mirbase21/hairpin.fa -m ${mainDir}/mirbase21/mature.fa -r $(pwd)/nf.sample.all.reads.fa -P -t hsa -W -y nf
 
 mkdir -p $outDir/default
 cd $outDir/default

@@ -5,7 +5,7 @@
 
 #SBATCH --time=10:00:00
 #SBATCH --cpus-per-task 1
-#SBATCH --mem 4gb
+#SBATCH --mem 8gb
 #SBATCH --nodes 1
 #SBATCH --open-mode=append
 #SBATCH --export=NONE
@@ -23,7 +23,7 @@ sampleShortName=$3
 lastDir=$4
 
 inDir=$(pwd)/${lastDir}/${sampleName}__${sampleShortName}/
-inFqGz=${inDir}/*_R1*.fastq.gz
+inFqGz=${inDir}/*.fq.gz
 
 #out
 step="collapse"
